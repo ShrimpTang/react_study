@@ -1,7 +1,7 @@
-import todoApp from './reducers'
-import {createStore} from 'redux'
-import {addTodo,setVisibilityFilter,toggleTodo,VisibilityFilters} from './actions'
-var store= createStore(todoApp);
+//import todoApp from './reducers'
+//import {createStore} from 'redux'
+//import {addTodo,setVisibilityFilter,toggleTodo,VisibilityFilters} from './actions'
+//var store= createStore(todoApp);
 
 //console.log(store.getState());
 //let un = store.subscribe(()=>{
@@ -15,4 +15,4 @@ var store= createStore(todoApp);
 //store.dispatch(toggleTodo(1));
 //store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
 //un();
-export default store;
+//export default store;
