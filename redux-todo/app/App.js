@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import store from './store'
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
+import Footer from './components/Footer';
 class App extends React.Component {
     render() {
         return (
@@ -27,6 +28,12 @@ class App extends React.Component {
                     onTodoClick={index=>{
                         console.log('onTodoClick',index)
                     }}
+                />
+                <Footer
+                    onFilterChange={f=>{
+                        console.log('filter change',f)
+                    }}
+                    filter="SHOW_ALL"
                 />
             </div>
         )
