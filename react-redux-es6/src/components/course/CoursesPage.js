@@ -1,17 +1,15 @@
 import React from  'react'
-import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as courseActions from '../../actions/courseActions'
+import CourseList from './CourseList'
 class CoursesPage extends React.Component{
 
     render(){
         return (
             <div>
                 <h1>Courses Page</h1>
-                {this.props.courses.map((c,i)=>{
-                    return <div key={i}>{c.title}</div>
-                })}
+                <CourseList courses={this.props.courses}></CourseList>
             </div>
         )
     }

@@ -7,7 +7,6 @@ export  function loadCoursesSuccess(courses){
     }
 }
 export function loadCourses(){
-    debugger;
     return function (dispatch) {
         courseApi.getAllCourses().then(courses=>{
             dispatch(loadCoursesSuccess(courses))
