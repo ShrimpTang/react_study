@@ -1,4 +1,4 @@
-import React from  'react'
+import React,{PropTypes} from  'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as courseActions from '../../actions/courseActions'
@@ -7,9 +7,16 @@ class ManageCoursePage extends React.Component {
 
     constructor(props,context){
         super(props,context);
+        debugger
         this.state = {
-            course:Object.assign({},this.props.course),
+            course:Object.assign({},props.course),
             errors:[]
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.course.id!=nextProps.params.id){
+            this.setState({course:Object.assign({},nextProps.course)});
         }
     }
 
@@ -23,6 +30,7 @@ class ManageCoursePage extends React.Component {
     saveCourse(event){
         event.preventDefault();
         this.props.actions.saveCourse(this.state.course);
+        this.context.router.push('/courses');
     }
 
     render() {
@@ -39,9 +47,17 @@ class ManageCoursePage extends React.Component {
     }
 
 }
+ManageCoursePage.contextTypes = {
+    router:PropTypes.object.isRequired
+}
 
-function mapStateToProps(state) {
+function mapStateToProps(state,ownProps) {
+    var id = ownProps.params.id;
+    var update_course = state.courses.find(c=> c.id===id);
     let course = {id: '', title: '', watchHref: '', authorId: '', f_length: '', category: ''}
+    if(update_course){
+        course = update_course;
+    }
     const authors4dropdown = state.authors.map(author=>{
         return {value:author.id,text:author.firstName+' '+author.lastName}
     })
