@@ -13,13 +13,27 @@ class ManageCoursePage extends React.Component {
         }
     }
 
+    updateCourseState(event){
+        const name = event.target.name;
+        const course = this.state.course;
+        course[name] = event.target.value;
+        return this.setState({course:course})
+    }
+
+    saveCourse(event){
+        event.preventDefault();
+        this.props.actions.saveCourse(this.state.course);
+    }
+
     render() {
         return (
             <div>
                 <CourseForm
-                    allAuthors={[]}
+                    onChange={this.updateCourseState.bind(this)}
+                    allAuthors={this.props.authors}
                     errors={this.state.errors}
-                    course={this.state.course}/>
+                    course={this.state.course}
+                    onSave={this.saveCourse.bind(this)}/>
             </div>
         )
     }
@@ -28,8 +42,12 @@ class ManageCoursePage extends React.Component {
 
 function mapStateToProps(state) {
     let course = {id: '', title: '', watchHref: '', authorId: '', f_length: '', category: ''}
+    const authors4dropdown = state.authors.map(author=>{
+        return {value:author.id,text:author.firstName+' '+author.lastName}
+    })
     return {
-        course: course
+        course: course,
+        authors:authors4dropdown
     }
 }
 function mapDispatchToProps(dispatch) {

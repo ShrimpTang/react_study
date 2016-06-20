@@ -28,8 +28,8 @@ const CourseForm = ({course,allAuthors,onSave,onChange,loading,errors})=>{
                 error={errors.category}
             />
             <TextInput
-                name="length"
-                label="length"
+                name="f_length"
+                label="f_length"
                 value={course.f_length}
                 onChange={onChange}
                 error={errors.f_length}
