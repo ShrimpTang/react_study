@@ -9,6 +9,7 @@ import configureStore from './store/configureStore'
 import {Provider} from 'react-redux'
 import {loadCourses} from './actions/courseActions'
 import {loadAuthors} from './actions/authorActions'
+import '../node_modules/toastr/build/toastr.css'
 var store = configureStore();
 store.dispatch(loadCourses())
 store.dispatch(loadAuthors())
