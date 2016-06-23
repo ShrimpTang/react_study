@@ -13,6 +13,15 @@ var Result = React.createClass({
     }
 });
 
+var C = React.createClass({
+    render:function(){
+        return (<div>
+            <span>cTest</span>
+            <div>{this.props.children}</div>
+        </div>)
+    }
+})
+
 var Main = React.createClass({
     getInitialState:function(){
         return {counter:0}
@@ -30,6 +39,7 @@ var Main = React.createClass({
                 <Button localHandlerClick={this.handlerClick} increment={50} />
                 <Button localHandlerClick={this.handlerClick} increment={100} />
                 <Result localCounter={this.state.counter}/>
+                <C>asdf</C>
             </div>)
     }
 });
