@@ -1,0 +1,1 @@
+export const APP_BAR_TITLE_CHANGE = 'APP_BAR_TITLE_CHANGE';

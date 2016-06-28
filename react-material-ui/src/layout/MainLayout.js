@@ -8,12 +8,13 @@ import Chip from 'material-ui/Chip';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import LeftDrawer from '../components/LeftDrawer/LeftDrawer'
+import {connect} from 'react-redux'
 class MainLayout extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            open: true
+            open: false
         }
     }
 
@@ -36,11 +37,11 @@ class MainLayout extends React.Component {
                     >
                         <LeftDrawer/>
                     </Drawer>
-
+                    {this.props.children}
                 </div>
 
             </MuiThemeProvider>
         )
     }
 }
-export default MainLayout
+export default connect()(MainLayout)
