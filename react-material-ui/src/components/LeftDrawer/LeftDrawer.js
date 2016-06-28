@@ -7,9 +7,7 @@ import './LeftDrawer.css'
 
 
 class LeftDrawer extends React.Component {
-
     render() {
-        console.log(this.context.muiTheme)
         var {textColor,color} = this.context.muiTheme.appBar;
         return (
             <MuiThemeProvider>
@@ -28,7 +26,7 @@ class LeftDrawer extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <MenuItem primaryText="Home"  leftIcon={<Home color={color} />}/>
+                        <MenuItem primaryText="Home" leftIcon={<Home color={color} />}/>
                     </div>
                 </div>
             </MuiThemeProvider>

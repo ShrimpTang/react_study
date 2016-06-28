@@ -9,31 +9,31 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import LeftDrawer from '../components/LeftDrawer/LeftDrawer'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actions from '../actions/mainLayoutAction'
 class MainLayout extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            open: false
-        }
     }
 
     handleToggle() {
-        this.setState({open: !this.state.open});
+        //this.setState({open: !this.props.open});
     }
 
     render() {
+        console.log(this.props)
         return (
             <MuiThemeProvider>
                 <div>
                     <AppBar
-                        title="Title"
+                        title={this.props.title}
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
-                        onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
+                        onLeftIconButtonTouchTap={this.props.actions.toggleDrawerOpen}
                     />
-                    <Drawer open={this.state.open}
+                    <Drawer open={this.props.open}
                             docked={false}
-                            onRequestChange={(open) => this.setState({open})}
+                            onRequestChange={this.props.actions.toggleDrawerOpen}
                     >
                         <LeftDrawer/>
                     </Drawer>
@@ -44,4 +44,15 @@ class MainLayout extends React.Component {
         )
     }
 }
-export default connect()(MainLayout)
+function mapStateToProps(state) {
+    return {
+        title: state.mainLayout.title,
+        open: state.mainLayout.open
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout)

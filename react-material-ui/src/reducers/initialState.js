@@ -1,5 +1,6 @@
 export default {
     mainLayout: {
-        title: 'Home'
+        title: 'Home',
+        open:false
     }
 }
