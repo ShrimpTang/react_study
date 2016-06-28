@@ -7,22 +7,12 @@ import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import LeftDrawer from '../components/LeftDrawer/LeftDrawer'
+import LeftDrawer from '../components/LeftDrawer'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from '../actions/mainLayoutAction'
 class MainLayout extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
-
-    handleToggle() {
-        //this.setState({open: !this.props.open});
-    }
-
     render() {
-        console.log(this.props)
         return (
             <MuiThemeProvider>
                 <div>

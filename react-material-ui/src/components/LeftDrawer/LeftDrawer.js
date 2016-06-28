@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Avatar from 'material-ui/Avatar'
 import MenuItem from 'material-ui/MenuItem';
 import Home from 'material-ui/svg-icons/action/home.js';
+import GamePad from 'material-ui/svg-icons/hardware/gamepad.js'
 import './LeftDrawer.css'
 
 
@@ -27,6 +28,7 @@ class LeftDrawer extends React.Component {
                     </div>
                     <div>
                         <MenuItem primaryText="Home" leftIcon={<Home color={color} />}/>
+                        <MenuItem primaryText="d7vg" leftIcon={<GamePad color={color} />}/>
                     </div>
                 </div>
             </MuiThemeProvider>
