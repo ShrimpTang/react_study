@@ -16,7 +16,7 @@ export const baseUrl = `http://localhost:9003/api/`;
 
 export const apiUrls = {
     getCategories: baseUrl + 'categories',
-    getComicDetail: baseUrl + 'comics/{comicId}',
+    getComicDetail: baseUrl + 'comics/{id}',
     getComicListByCatId: baseUrl + 'categories/{id}/page/{page}/comics',
     getComicListByType: baseUrl + 'categories/where/{type}/page/{page}/comics',
     getRandomComicList: baseUrl + 'comics/random',
