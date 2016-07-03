@@ -25,7 +25,7 @@ class MainLayout extends React.Component {
                             docked={false}
                             onRequestChange={this.props.actions.toggleDrawerOpen}
                     >
-                        <LeftDrawer/>
+                        <LeftDrawer toggle={this.props.actions.toggleDrawerOpen}/>
                     </Drawer>
                     {this.props.children}
                 </div>
