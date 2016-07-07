@@ -4,19 +4,22 @@
 import React from 'react';
 import {changeTitle} from '../../actions/mainLayoutAction'
 import {GridList, GridTile} from 'material-ui/GridList';
+import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import {connect} from 'react-redux'
 import {hashHistory} from 'react-router'
+import {bindActionCreators} from 'redux'
+import * as actions from '../../actions/mainLayoutAction'
 class PicaMan extends React.Component {
     constructor(props) {
         super(props);
-        this.props.dispatch(changeTitle('Picaman'));
+        //this.props.dispatch(changeTitle('Picaman'));
         this.state = {
             categories: []
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getCategories().then(categories=> {
             this.setState({
                 categories
@@ -228,6 +231,11 @@ class PicaMan extends React.Component {
     render() {
         return (
             <div style={styles.root}>
+                <AppBar
+                    title="哔咔"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonTouchTap={this.props.actions.toggleDrawerOpen}
+                />
                 <GridList
                     cellHeight={300}
                     cols={5}
@@ -253,8 +261,17 @@ class PicaMan extends React.Component {
     }
 
 }
-
-export default connect()(PicaMan)
+function mapStateToProps(state) {
+    return {
+        open: state.mainLayout.open
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PicaMan)
 
 const styles = {
     root: {

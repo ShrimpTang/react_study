@@ -10,16 +10,19 @@ import Paper from 'material-ui/Paper';
 import {connect} from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import ComicDetail from './comicDetail'
+import {bindActionCreators} from 'redux'
+import * as actions from '../../actions/mainLayoutAction';
+import AppBar from 'material-ui/AppBar';
 class ComicList extends React.Component {
     constructor(props) {
         super(props)
-        props.dispatch(changeTitle('ComicList'));
+        //props.dispatch(changeTitle('ComicList'));
         this.state = {
             comicList: []
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         var {id,page} = this.props.params;
         getComicListByCatId({id, page})
             .then(comicList=> {
@@ -30,6 +33,11 @@ class ComicList extends React.Component {
     render() {
         return (
             <div style={styles.root}>
+                <AppBar
+                    title="哔咔列表"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonTouchTap={this.props.actions.toggleDrawerOpen}
+                />
                 <GridList
                     cellHeight={300}
                     cols={4}
@@ -57,7 +65,17 @@ class ComicList extends React.Component {
         hashHistory.push('/picaman/comic/' + id)
     }
 }
-export default connect()(ComicList);
+function mapStateToProps(state) {
+    return {
+        open: state.mainLayout.open
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ComicList);
 
 const styles = {
     root: {

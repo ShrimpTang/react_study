@@ -16,11 +16,13 @@ class MainLayout extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <AppBar
-                        title={this.props.title}
-                        iconClassNameRight="muidocs-icon-navigation-expand-more"
-                        onLeftIconButtonTouchTap={this.props.actions.toggleDrawerOpen}
-                    />
+                    {
+                        //<AppBar
+                        //    title={this.props.title}
+                        //    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                        //    onLeftIconButtonTouchTap={this.props.actions.toggleDrawerOpen}
+                        ///>
+                    }
                     <Drawer open={this.props.open}
                             docked={false}
                             onRequestChange={this.props.actions.toggleDrawerOpen}

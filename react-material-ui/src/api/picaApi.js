@@ -39,3 +39,7 @@ export function getComicListByCatId(obj) {
 export function getComicDetail(obj) {
     return fetch(supplant(apiUrls.getComicDetail, obj)).then(r=>r.json());
 }
+
+export function getEpisode(obj){
+    return fetch(supplant(apiUrls.getEpisode, obj)).then(r=>r.json());
+}

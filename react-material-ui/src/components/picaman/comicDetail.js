@@ -22,7 +22,7 @@ export default class ComicDetail extends React.Component {
         }
         return (
             <Paper zDepth={3}>
-                <div style={{...styles.main,height:mainHeight,backgroundImage:`url("${comic.cover_image}")`}}>
+                <div style={{...styles.main,height:mainHeight,backgroundImage:`url("${comic.cover_image?comic.cover_image:''}")`}}>
                     <div style={{...styles.mainBottom,height:mainBottomHeight}}>
                         <div style={{...styles.bottomText,height:css.nameHeight,marginTop:5}}>
                              <span style={{fontSize:css.nameSize}}>{comic.name}({comic.total_page}P)
