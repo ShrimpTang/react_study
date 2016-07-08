@@ -12,7 +12,8 @@ function supplant(str, obj) {
     ) : str;
 }
 
-export const baseUrl = `http://localhost:9003/api/`;
+//export const baseUrl = `http://localhost:9003/api/`;
+export const baseUrl = `http://45.78.12.132:9003/api/`;
 
 export const apiUrls = {
     getCategories: baseUrl + 'categories',
